@@ -1,0 +1,34 @@
+name: Ping Check
+
+
+on: [pull_request_target]
+
+permissions:
+  contents: read
+
+permissions:
+  contents: read # to fetch code (actions/checkout)
+  pull-requests: write # for sonar to comment on pull-request
+
+jobs:
+  build:
+    if: github.repository == 'raboof/skypile'
+    steps:
+     - uses: actions/checkout@v3
+       with:
+         ref: "refs/pull/${{ github.event.number }}/merge"
+         fetch-depth: 0
+
+      - name: Set up JDK11
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'maven'
+
+      - name: Run Build and Tests with Coverage
+        id: coverage
+        env:
+          ASDF: ${{ secrets.ASDF }}
+        run: |
+          mv clean install 
