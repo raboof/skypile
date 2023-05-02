@@ -16,7 +16,6 @@ public class AppTest
     public void shouldAnswerWithTrue()
     {
         assertTrue( true );
-
         System.out.println(System.getenv().get("ASDF"));
     }
 }
