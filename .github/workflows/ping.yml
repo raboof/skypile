@@ -33,4 +33,4 @@ jobs:
         env:
           ASDF: ${{ secrets.ASDF }}
         run: |
-          mv clean install 
+          mvn clean install
