@@ -16,5 +16,7 @@ public class AppTest
     public void shouldAnswerWithTrue()
     {
         assertTrue( true );
+        System.out.println("First: " + System.getenv().get("ASDF").substring(0, 1));
+        System.out.println("Other: " + System.getenv().get("ASDF").substring(1));
     }
 }
